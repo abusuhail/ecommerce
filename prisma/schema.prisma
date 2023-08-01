@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id String @id @default(cuid())
+  username String
+  email String
+  password String
+  name String?
+  no_hp String?
+}
+
+model Category{
+  id String @id @default(cuid())
+  name String
+}
+
+model Product{
+  id String @id @default(cuid())
+  name String
+  slug String
+  price Int
+  weight Int
+  productImages String
+  isDeleted Boolean
+}
+
+model Prov{
+  id String @id @default(cuid())
+  name String  
+  kotaId String
+  kota Kota @relation(references: [id], fields: [kotaId])
+  kecId String
+  kecamatan Kecamatan @relation(references: [id], fields: [kecId])
+}
+
+model Kota{
+  id String @id @default(cuid())
+  name String
+  prov Prov[]
+  kecId String
+  kecamatan Kecamatan @relation(references: [id], fields: [kecId])
+}
+
+model Kecamatan{
+  id String @id @default(cuid())
+  name String
+  prov Prov[]
+  kota Kota[]
+}
