@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/utils/prisma";
 import { compare } from "bcrypt";
 import { sign } from "jsonwebtoken";
+import { cookies } from "next/headers";
 
 export async function POST(req) {
   const { email, password } = await req.json();
@@ -25,6 +26,8 @@ export async function POST(req) {
         };
 
         const token = sign(userData, process.env.TOKEN_SECRET_KEY);
+        cookies().set("token", token);
+
         return NextResponse.json({ record: userData, token }, { status: 200 });
       }
       return NextResponse.json(

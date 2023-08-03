@@ -1,0 +1,31 @@
+### CREATE PRODUCT
+POST http://localhost:3000/api/v1/product
+Content-Type: application/json
+
+{
+    "name" : "Madu Hutan Organik",
+    "slug" : "madu-hutan-organik",
+    "price" : "120000",
+    "weight" : "330",
+    "productImages" : ""
+}
+
+### GET ALL PRODUCT
+GET http://localhost:3000/api/v1/product
+
+
+### GET ONE PRODUCT
+GET http://localhost:3000/api/v1/product/madu-trigona
+
+
+### PATCH PRODUCT
+PATCH http://localhost:3000/api/v1/product/clkv78hep000cos7o7gyo6lbt
+Content-Type: application/json
+
+{
+    "name" : "Madu Trigona Organik",
+    "slug" : "madu-trigona-organik",
+    "price" : "150000",
+    "weight" : "330",
+    "productImages" : ""
+}
