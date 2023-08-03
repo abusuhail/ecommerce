@@ -6,9 +6,11 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "mysql"
+  url = env("DATABASE_URL")
+  relationMode = "prisma"
 }
+
 
 model User {
   id String @id @default(cuid())
@@ -31,7 +33,9 @@ model Product{
   price Int
   weight Int
   productImages String
-  isDeleted Boolean
+  isDeleted Boolean @default(false)
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 }
 
 model Prov{
@@ -56,4 +60,10 @@ model Kecamatan{
   name String
   prov Prov[]
   kota Kota[]
+}
+
+model Slider{
+  id String @id @default(cuid())
+  sliderImages String
+  content String
 }

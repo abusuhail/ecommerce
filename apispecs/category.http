@@ -1,0 +1,26 @@
+### CREATE CATEGORY
+
+POST http://localhost:3000/api/v1/category
+Content-Type: application/json
+
+{
+    "name" : "minuman"
+}
+
+### GET ALL CATEGORY
+
+GET http://localhost:3000/api/v1/category
+
+
+### GET ONE CATEGORY
+GET http://localhost:3000/api/v1/category/clkv5nhk30001osn84eckj7ks
+
+
+### PATCH CATEGORY
+
+PATCH http://localhost:3000/api/v1/category/clkv5ish00000osy0l1okxupd
+Content-Type: application/json
+
+{
+    "name" : "Kecantikan"
+}

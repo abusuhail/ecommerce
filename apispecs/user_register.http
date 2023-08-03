@@ -1,0 +1,11 @@
+### CREATE USER
+
+POST http://localhost:3000/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "name" : "Andika",
+    "username" : "andika",
+    "email" : "andika@gmail.com",
+    "password" : "123456"
+}
